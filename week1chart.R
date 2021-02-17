@@ -4,7 +4,7 @@ library(ggplot2)
 
 ## Melt Data
 data<-Data_Supplier_Freshconnection
-newdata<-melt(data=Data_Supplier_Freshconnection,id.vars = c("Product","Supplier","Delivery Reliability"),measure.vars = c("4 hours","1 day","2 days","1 week"),variable.name = "Delivery window",value.name = "Contract Index")
+newdata<-melt(data=Data_Supplier_Freshconnection,id.vars = c("Product","Supplier","Delivery Reliability"),measure.vars = c("4 hours","1 day","2 days","1 week"),variable.name = "Delivery_Window",value.name = "Contract_Index")
 
 ### Mono Packaging Materials
 monodata<-tanewda%>%filter(Supplier=="Mono Packaging Materials")
