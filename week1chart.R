@@ -4,10 +4,10 @@ library(ggplot2)
 
 ## Melt Data
 data<-Data_Supplier_Freshconnection
-newdata<-melt(data=Data_Supplier_Freshconnection,id.vars = c("Product","Supplier","Delivery Reliability"),measure.vars = c("4 hours","1 day","2 days","1 week"),variable.name = "Delivery Window",value.name = "Contract Index")
+newdata<-melt(data=Data_Supplier_Freshconnection,id.vars = c("Product","Supplier","Delivery Reliability"),measure.vars = c("4 hours","1 day","2 days","1 week"),variable.name = "Delivery window",value.name = "Contract Index")
 
 ### Mono Packaging Materials
-monodata<-newdata%>%filter(Supplier=="Mono Packaging Materials")
+monodata<-tanewda%>%filter(Supplier=="Mono Packaging Materials")
 Reliability<-monodata$`Delivery Reliability`
 Index<-monodata$`Contract Index`
 Delivery_Window<-monodata$`Delivery Window`
@@ -79,3 +79,12 @@ ggplot(data = yobomadata,aes(x=Reliability,y=Index10,color=Delivery_Window))+geo
   labs(x="Reliability",y="Contract Index",color="Delivery Window")+
   ggtitle("YoBoMa")+
   theme(plot.title = element_text(hjust = 0.5))
+
+###Compare Mango
+mangodata<-filter(newdata,Product=="Mango"&Delivery_Window=="4 hours")
+ggplot(data = mangodata,aes(x=mangodata$`Delivery Reliability`,y=mangodata$`Contract Index`,color=mangodata$Supplier))+geom_line(size=1.5)+
+  labs(x="Reliability",y="Contract Index",color="Suppliers")+
+  ggtitle("Mango suppliers (delivery window 4 hours)")+
+  theme(plot.title = element_text(hjust = 0.5))
+
+
